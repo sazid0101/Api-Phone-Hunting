@@ -11,6 +11,15 @@ const displayPhone =(allPhones) =>{
     //clear data before showing search data
     cardContainer.textContent= " ";
 
+    //show 12 phones if there are more phone.
+    const showAllContainer = document.getElementById("show-all-container")
+    if(allPhones.length > 9){
+        showAllContainer.classList.remove("hidden");
+    }else{
+        showAllContainer.classList.add("hidden")
+    }
+     allPhones = allPhones.slice(0,9)
+
     //loop for get single phone from all phones
     allPhones.forEach(phone => {
         console.log(phone)
