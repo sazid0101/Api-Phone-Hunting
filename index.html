@@ -11,17 +11,24 @@
 <body>
     <header>
         <h1 class="text-4xl text-center my-10">Api Practice with phone hunting project</h1>
-        <p>Search here: iphone,samsung,oppo...</p>
+        
     </header>
     <main class="mx-auto">
         <!--search-->
-        <section class="items-center justify-center">
-            <input id="search-text" type="text" placeholder="search phone..." class="input input-bordered input-primary w-full max-w-xs" />
+        <section >
+            <div class="items-center justify-center text-center">
+                <p>Search here: iphone,samsung,oppo...</p>
+                <input id="search-text" type="text" placeholder="search phone..." class="input input-bordered input-primary w-full max-w-xs" />
 
                 <button onclick="handleSearch()" class="btn btn-success">Search</button>
         </section>
+            </div>
         <!--single phone card-->
         <section>
+            <div id="loading-spinner-container" class="hidden text-center pt-5">
+                <span class="loading loading-spinner text-error"></span>
+            </div>
+
             <div id="card-container" class=" m-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 
                 <!-- <div class="card bg-base-200 w-96 shadow-xl">
@@ -41,7 +48,7 @@
                   </div> -->
             </div>
 
-            <div  id="show-all-container" class="hidden items-center">
+            <div  id="show-all-container" class="hidden text-center">
                 <button class="btn btn-success">Show All</button>
             </div>
         </section>
