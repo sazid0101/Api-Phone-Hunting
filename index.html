@@ -11,11 +11,19 @@
 <body>
     <header>
         <h1 class="text-4xl text-center my-10">Api Practice with phone hunting project</h1>
+        <p>Search here: iphone,samsung,oppo...</p>
     </header>
-    <main>
+    <main class="mx-auto">
+        <!--search-->
+        <section class="items-center justify-center">
+            <input id="search-text" type="text" placeholder="search phone..." class="input input-bordered input-primary w-full max-w-xs" />
+
+                <button onclick="handleSearch()" class="btn btn-success">Search</button>
+        </section>
+        <!--single phone card-->
         <section>
             <div id="card-container" class=" m-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <!--single phone card-->
+                
                 <!-- <div class="card bg-base-200 w-96 shadow-xl">
                     <figure class="px-10 pt-10 m-5">
                       <img
