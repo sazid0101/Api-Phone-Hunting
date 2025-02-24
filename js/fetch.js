@@ -40,7 +40,7 @@ const displayPhone =(allPhones, isShowAll) =>{
                       <h2 class="card-title">${phone.phone_name}</h2>
                       <p>If a dog chews shoes whose shoes does he choose?</p>
                       <div class="card-actions">
-                        <button class="btn btn-primary">Buy Now</button>
+                        <button onclick="showDetails('${phone.slug}')" class="btn btn-primary">Show Details</button>
                       </div>
                     </div>
         `;
@@ -52,7 +52,7 @@ const handleSearch = (isShowAll) =>{
     toggleLoadingSpinner(true)  //spinner on
     const searchTextId = document.getElementById("search-text") 
     const searchText = searchTextId.value 
-    console.log(searchText)
+    // console.log(searchText)
 
     //function call
     loadData(searchText, isShowAll)
@@ -69,6 +69,32 @@ const toggleLoadingSpinner = (isLoading) =>{
 //show all phones
 const showAll = () =>{
     handleSearch(true)
+}
+//show details for single phone when click show details button.
+const showDetails = async(id) =>{
+    // console.log(id)
+    const response = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`)
+    const showDetailsData = await response.json()
+    // console.log(showDetailsData)
+    const detailsData = showDetailsData.data
+    showModal(detailsData)
+}
+//show modal
+const showModal = (phone) =>{
+    console.log(phone)
+    const setName = document.getElementById("set-name")  //set the brand name.
+    setName.innerText= phone.brand
+
+    const setContainer = document.getElementById("set-container")
+    setContainer.innerHTML = `
+    <img  src="${phone.image}" >
+    <p><span>Name: </span>${phone.name}</p>
+    <p> <span>Memory: </span> ${phone.mainFeatures.memory}</p>
+    <p><span>Display Size: </span>${phone.mainFeatures.displaySize}</p>
+    <p><span>Release Date: </span>${phone.releaseDate}</p>
+    `
+
+    showDetailsModal.showModal()
 }
 //function call
 loadData()
